@@ -3,13 +3,21 @@
 </div>
 <div class="row">
     <div class="col-md-12">
+        <p ng-show="mensagem.length" class="alert alert-success">{{mensagem}}</p>
         <form>
-            <input class="form-control" ng-model="filtro" ng-model-options="{debounce: 500}" placeholder="Pesquisar.." />
+	        <div class="input-group">
+	        	<span class="input-group-btn">
+		        	<a href="/fotos/new" class="btn btn-primary">Nova Foto</a>
+	        	</span>
+	            <input class="form-control" ng-model="filtro" ng-model-options="{debounce: 500}" placeholder="Pesquisar.." />
+	        </div>
         </form>
     </div>
 </div>
 <div class="row">
     <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
-        <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}" />
+        <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
+        <a class="btn btn-primary btn-block" href="/fotos/edit/{{foto._id}}">Editar</a>
+        <button class="btn btn-danger btn-block" ng-click="remover(foto)">Excluir</button>
     </meu-painel>
 </div>

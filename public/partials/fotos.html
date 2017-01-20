@@ -28,11 +28,20 @@
             <textarea ng-model="foto.descricao" name="descricao" class="form-control">
             </textarea>
         </div>
+        <div class="form-group">
+            <label>Grupo</label>
+            <select class="form-control" required ng-controller="GruposController" ng-model="foto.grupo" ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos" name="grupo">
+                <option value="">Escolha um Grupo</option>
+                <p ng-show="formulario.$submitted && formulario.grupo.$error.required" class="alert alert-danger">
+                    Grupo obrigatório
+                </p>
+            </select>
+        </div>
 
         <button ng-disabled="formulario.$invalid" type="submit" class="btn btn-primary">
             Salvar
         </button>
-         <a href="/" class="btn btn-primary">Voltar</a>
+            <a href="/" class="btn btn-primary">Voltar</a>
         <hr>
     </div>
     <div class="col-md-6">

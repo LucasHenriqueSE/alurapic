@@ -1,4 +1,5 @@
-angular.module('minhasDiretivas', []).directive('meuPainel', function(){
+angular.module('minhasDiretivas', []).directive('meuPainel', function() {
+	
 	var ddo = {};
 
 	ddo.restrict = "AE";
@@ -13,7 +14,7 @@ angular.module('minhasDiretivas', []).directive('meuPainel', function(){
 
 	return ddo;
 
-}).directive('minhaFoto', function(){
+}).directive('minhaFoto', function() {
 
 	var ddo = {};
 
@@ -27,4 +28,20 @@ angular.module('minhasDiretivas', []).directive('meuPainel', function(){
 	ddo.template = '<img class="img-responsive center-block" src="{{url}}" alt="{{titulo}}" />';
 
 	return ddo;
+
+}).directive('meuBotaoPerigo', function(){
+	
+	var ddo = {};
+
+	ddo.restrict = 'E';
+
+	ddo.scope = {
+		acao: '&',
+		nome: '@'
+	}
+
+	ddo.template = '<button class="btn btn-danger btn-block" ng-click="acao()">{{nome}}</button>';
+
+	return ddo;
+	
 });
